@@ -19,3 +19,5 @@ conda create -y -n funannotate python=2.7 numpy pandas scipy matplotlib seaborn 
     
 # Here I find the others step, but still confuse to me: https://funannotate.readthedocs.io/en/latest/prepare.html
 
+# So, let's try to begin the cleaning assembly, write:
+funnanotate clean #you'll see a couple of commands
