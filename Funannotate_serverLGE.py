@@ -21,3 +21,12 @@ conda create -y -n funannotate python=2.7 numpy pandas scipy matplotlib seaborn 
 
 # So, let's try to begin the cleaning assembly, write:
 funnanotate clean #you'll see a couple of commands
+
+# Remenber to export the packages:
+export BAMTOOLS_PATH=/dados/trichechus/analises_erica/bamtools
+export FUNANNOTATE_DB=/dados/trichechus/analises_erica/DB/
+export GENEMARK_PATH=/dados/public/gm_et_linux_64/gmes_petap
+export AUGUSTUS_CONFIG_PATH=/dados/public/miniconda3/config/
+export PASAHOME=/dados/public/miniconda3/envs/funannotate/opt/pasa-2.3.3/
+export TRINITYHOME=/dados/public/miniconda3/envs/funannotate/opt/trinity-2.6.6/
+export EVM_HOME=/dados/public/miniconda3/envs/funannotate/opt/evidencemodeler-1.1.1/
