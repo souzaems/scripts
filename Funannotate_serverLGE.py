@@ -30,3 +30,6 @@ export AUGUSTUS_CONFIG_PATH=/dados/public/miniconda3/config/
 export PASAHOME=/dados/public/miniconda3/envs/funannotate/opt/pasa-2.3.3/
 export TRINITYHOME=/dados/public/miniconda3/envs/funannotate/opt/trinity-2.6.6/
 export EVM_HOME=/dados/public/miniconda3/envs/funannotate/opt/evidencemodeler-1.1.1/
+
+# Repeating masking the scaffolds
+nohup funannotate mask -i /dados/trichechus/results_tinunguis/Tinunguis.scaffolds.fasta -o tinumask --cpus 15 &
