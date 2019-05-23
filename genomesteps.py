@@ -19,6 +19,6 @@ python ../../../../dados/software/busco-master/scripts/run_BUSCO.py -i ../../../
 ##Run the REPEATMASKER
 /dados/software/RepeatMasker/RepeatMasker -pa 30 -gff -lib RM_118180.TueMay210948422019/consensi.fa.classified ../../results_tinunguis/Tinunguis.scaffolds.fasta 
 ##RE-RUN the REPEATMASKER adding the command -xsmall that shows the repeat regions in small case
-/dados/software/RepeatMasker/RepeatMasker -pa 30 -xsmall -gff -lib RM_118180.TueMay210948422019/consensi.fa.classified ../../results_tinunguis/Tinunguis.scaffolds.fasta 
+nohup /dados/software/RepeatMasker/RepeatMasker -pa 30 -xsmall -gff -lib RM_118180.TueMay210948422019/consensi.fa.classified ../../results_tinunguis/Tinunguis.scaffolds.fasta &
 
 
