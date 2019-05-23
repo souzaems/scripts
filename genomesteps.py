@@ -42,10 +42,8 @@ nohup /dados/software/RepeatMasker/RepeatMasker -pa 30 -xsmall -gff -lib RM_1181
   sed -i 's/BUSCO_laurasiatheria_2431351931/trichechus_inunguis/g' trichechus_inunguis_parameters.cfg
            ###########This command is new for me###########################
            sed '/s/The_name_that_U_looking_for/The_new_name/g' namefile.txt
-## 
-# Copia a pasta da espécie nova dentro do config do augustus. No nosso caso:
+## We copy all the directory 'trichechus_inunguis' to AUGUSTUS file
 cp -r /dados/trichechus/analises_erica/tinunguis_busco_genome/run_laurasiatheria/augustus_output/trichechus_inunguis/ /dados/public/miniconda3/config/species/
-
-# Pronto, no parâmetro --species=SPECIES do augustus ele vai encontrar o trichechus_inunguis (--species=trichechus_inunguis)
+## With this steps in the parameter --species=SPECIES from AUGUSTUS, we will find --species=trichechus_inunguis
 
 
