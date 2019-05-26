@@ -26,7 +26,7 @@ funnanotate clean #you'll see a couple of commands
 export BAMTOOLS_PATH=/dados/trichechus/analises_erica/bamtools
 export FUNANNOTATE_DB=/dados/trichechus/analises_erica/DB/
 export GENEMARK_PATH=/dados/public/genemark/gmes_petap/gmes_petap.pl
-export AUGUSTUS_CONFIG_PATH=/dados/public/miniconda3/bin/augustus
+export AUGUSTUS_CONFIG_PATH=/dados/public/miniconda3/config
 export PASAHOME=/dados/public/miniconda3/envs/funannotate/opt/pasa-2.3.3/
 export TRINITYHOME=/dados/public/miniconda3/envs/funannotate/opt/trinity-2.6.6/
 export EVM_HOME=/dados/public/miniconda3/envs/funannotate/opt/evidencemodeler-1.1.1/
