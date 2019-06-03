@@ -46,7 +46,7 @@ nohup /dados/software/RepeatMasker/RepeatMasker -pa 30 -xsmall -gff -lib RM_1181
 cp -r /dados/trichechus/analises_erica/tinunguis_busco_genome/run_laurasiatheria/augustus_output/trichechus_inunguis/ /dados/public/miniconda3/config/species/
 ## With this steps in the parameter --species=SPECIES from AUGUSTUS, we will find --species=trichechus_inunguis
 ## We verify that AUGUSTUS in default usually use only 1 CPU, so to improve the analysis we decide to split the scaffolds and run each one:
-## split.py
+# split.py
 import os
 print("Comecou")
 arquivo = open("/dados/trichechus/analises_erica/Repeat_test/Tinunguis.scaffolds.fasta.masked.fasta", "r")
