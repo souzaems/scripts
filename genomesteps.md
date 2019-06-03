@@ -45,5 +45,45 @@ nohup /dados/software/RepeatMasker/RepeatMasker -pa 30 -xsmall -gff -lib RM_1181
 ## We copy all the directory 'trichechus_inunguis' to AUGUSTUS file
 cp -r /dados/trichechus/analises_erica/tinunguis_busco_genome/run_laurasiatheria/augustus_output/trichechus_inunguis/ /dados/public/miniconda3/config/species/
 ## With this steps in the parameter --species=SPECIES from AUGUSTUS, we will find --species=trichechus_inunguis
+## We verify that AUGUSTUS in default usually use only 1 CPU, so to improve the analysis we decide to split the scaffolds and run each one:
+## split.py
+import os
+print("Comecou")
+arquivo = open("/dados/trichechus/analises_erica/Repeat_test/Tinunguis.scaffolds.fasta.masked.fasta", "r")
 
+dic = {}
+
+count_bp = 0
+for line in arquivo:
+        line = line.rstrip()
+        if line.startswith(">"):
+                name = line[1:]
+                dic[name] = ""
+        else:
+                dic[name] = dic[name] + str(line)
+arquivo.close()
+
+count_files = 1
+count_bp = 0
+
+print(str(count_files) + " de 30")
+os.mkdir("/dados/trichechus/analises_erica/augustus_lucas/divididos/1/")
+new_arquivo = open("/dados/trichechus/analises_erica/augustus_lucas/divididos/1/Tinunguis.scaffolds.masked.1.fasta", "w")
+for key, value in dic.items():
+        count_bp = count_bp + len(value)
+        if count_bp <= 105140235:
+                new_arquivo.write(">" + str(key) + "\n" + str(value) + "\n")
+        else:
+                count_files += 1
+                count_bp = 0
+                new_arquivo.close()
+                os.mkdir("/dados/trichechus/analises_erica/augustus_lucas/divididos/" + str(count_files) + "/")
+                new_arquivo = open("/dados/trichechus/analises_erica/augustus_lucas/divididos/" + str(count_files) + "/Tinunguis.scaffolds.masked." + str(count_files) + ".fasta", "w")
+                new_arquivo.write(">" + str(key) + "\n" + str(value) + "\n")
+                print(str(count_files) + " de 30")
+
+new_arquivo.close()
+print("Acabou.")
+
+## This commnad is used with python to split the scaffolds 
 
