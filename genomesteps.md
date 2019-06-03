@@ -85,5 +85,58 @@ for key, value in dic.items():
 new_arquivo.close()
 print("Acabou.")
 
-## This commnad is used with python to split the scaffolds 
+## This commnad is used with python to split the scaffolds in 30 files, after that we run AUGUSTUS simultaneously all the files, using the follow script
+# run_augustus.py
+import os
+import multiprocessing as mp
+
+lista_arquivos = os.listdir("/dados/trichechus/analises_erica/augustus_lucas/divididos/")
+
+def to_run(arquivo):
+        os.chdir("/dados/trichechus/analises_erica/augustus_lucas/divididos/" + str(arquivo))
+        os.system("augustus --strand=both --genemodel=partial --protein=on --introns=on --start=on --stop=on --cds=on --codingseq=on --alternatives-from-sampling=true --sample=100 --minexonintronprob=0.1 --minmeanexonintronprob=0.4 --maxtracks=-1 --temperature=3 --outfile=Tinunguis.scaffolds.masked." + str(arquivo) + ".out --softmasking=1 --species=trichechus_inunguis Tinunguis.scaffolds.masked." + str(arquivo) + ".fasta")
+
+pool = mp.Pool(30)
+pool.map(to_run, lista_arquivos)
+
+## The next step is select only a specific number of sequences (I gues)
+# ParseAugustusOutuput.py
+import os
+import re
+
+dic_cds = {}
+
+count = 0 # Contados pra dar numero aos genes
+check_block = 0 # Variavel pra checar se a linha que comeca com "# " esta depois do primeiro "start gene"
+
+for item in os.listdir("/dados/trichechus/analises_erica/augustus_lucas/divididos/"):
+        if item.endswith(".py"):
+                pass
+        else:
+                arquivo = open("/dados/trichechus/analises_erica/augustus_lucas/divididos/" + str(item) + "/Tinunguis.scaffolds.masked." + str(item) + ".out")
+                for line in arquivo:
+                        line = line.rstrip()
+                        if "start gene" in line:
+                                check_block = 10 # Mudo o valor do check block. La pra frente tem um if que vai usar esse valor.
+                                count += 1 # Contador pro nome do gene
+                                name = "TINU" + str(count) # Dou o nome do gene + o valor
+                                dic_cds[name] = "" # Crio a key sem valor
+                        elif "# coding sequence" in line: # Quando tem coding sequence na linha, comeca a sequencia
+                                match = re.search("\[(.*)", line) # Pego a sequencia e na linha de baixo passo a string pra variavel seq
+                                seq = match.group(1)
+                        elif line.startswith("# "): # Se a linha comeca com "# "
+                                if check_block == 10: # E se ja passou o primeiro start gene
+                                        if "]" not in line: # Se nao tem "]" na linha, que determina o fim do gene
+                                                count_string = 0 # Esse count serve para eu ver se a linha so tem nucleotideo ou se tem aminoacidos tambem
+                                                seq_size = len(line[2:]) # Tamanho da sequencia da linha
+                                                for char in line: # Para cada char na linha
+                                                        if char.islower(): # Se for undercase (nucleotide), conta +1
+                                                                count_string += 1
+                                                        else: # Se nao passo
+
+## We will run BUSCO against the predict files generate by AUGUSTUS
+
+
+
+
 
