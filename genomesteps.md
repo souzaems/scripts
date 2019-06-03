@@ -135,6 +135,7 @@ for item in os.listdir("/dados/trichechus/analises_erica/augustus_lucas/dividido
                                                         else: # Se nao passo
 
 ## We will run BUSCO against the predict files generate by AUGUSTUS
+python ../../../../dados/software/busco-master/scripts/run_BUSCO.py -i Tinunguis_augustus_predicted.fasta -o agpred -l ../../../../dados/trichechus/laurasiatheria_odb9/ -m tran -c 20
 
 
 
