@@ -137,6 +137,23 @@ for item in os.listdir("/dados/trichechus/analises_erica/augustus_lucas/dividido
 ## We will run BUSCO against the predict files generate by AUGUSTUS
 python ../../../../dados/software/busco-master/scripts/run_BUSCO.py -i Tinunguis_augustus_predicted.fasta -o agpred -l ../../../../dados/trichechus/laurasiatheria_odb9/ -m tran -c 20
 
+## According our results we decided to use transcriptome data to improve the prediction. For this, we test one of the transcriptome data, we use the follow workflow
+
+# Download this
+https://www.ncbi.nlm.nih.gov/sra/SRX2155843
+SRR4228546
+
+# How to do this, remember that install a package with those tools
+https://docs.google.com/document/d/1rVcZDlmI5K0agDyVaIv4eaWqwgamq0ENc9Fv-1T6sG4/edit
+
+# Install Trinity, for this I use the conda environment
+conda install -n transcriptome trinity
+
+# Command line
+../../../../../dados/public/miniconda3/envs/transcriptome/bin/Trinity --seqType fa --left SRX2155843_ok_1.fastq --right SRX2155843_ok_2.fastq --CPU 20 --max_memory 40G
+
+# After this use the data to training Augustus
+
 
 
 
