@@ -2,7 +2,6 @@
 #We will create a list with the headers of /dados/trichechus/final_prediction/inunguis/T_inunguis.blast_uniprot.fasta
 #After this we will do an dictionary using /dados/trichechus/final_prediction/inunguis/augustus.hints.codingseq we will looping and create a file with sequences based on the list created
 #Follow the commands
-
 # Criar a lista com os headers ok
 anotation = [] 
 
@@ -14,7 +13,6 @@ for line in head:
 	else:
 		pass
 head.close()
-
 
 # Criar o dic com a predição do augustus
 notation = {}
