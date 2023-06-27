@@ -17,3 +17,17 @@ sumt;
 sump;
 
 end;
+
+**RaxML**
+
+*Bootstraping*
+
+raxmlHPC -m GTRGAMMA -p 12345 -b 12345 -# 100 -s dna.phy -n T14 
+
+*Rapid bootstraping*
+
+raxmlHPC -m GTRGAMMA -p 12345 -x 12345 -# 100 -s dna.phy -n T19 
+
+**Partitioned analysis*
+
+raxmlHPC -m GTRGAMMA -p 12345 -q simpleDNApartition.txt -s dna.phy -n T21 
